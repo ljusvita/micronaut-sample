@@ -1,4 +1,8 @@
+/* (C) 2025 */
 package com.example;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.MediaType;
@@ -8,22 +12,19 @@ import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import jakarta.inject.Inject;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 @MicronautTest
 public class HelloControllerTest {
 
-    @Inject
-    @Client("/")
-    HttpClient client;
+  @Inject
+  @Client("/")
+  HttpClient client;
 
-    @Test
-    public void testHello() {
-        HttpRequest<?> request = HttpRequest.GET("/hello").accept(MediaType.TEXT_PLAIN);
-        String body = client.toBlocking().retrieve(request);
+  @Test
+  public void testHello() {
+    HttpRequest<?> request = HttpRequest.GET("/hello").accept(MediaType.APPLICATION_JSON);
+    String body = client.toBlocking().retrieve(request);
 
-        assertNotNull(body);
-        assertEquals("Hello World", body);
-    }
+    assertNotNull(body);
+    assertEquals("Hello World", body);
+  }
 }
