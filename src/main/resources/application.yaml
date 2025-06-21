@@ -1,0 +1,16 @@
+# Micronaut 애플리케이션 설정 파일 (YAML 형식)
+# 이 파일은 애플리케이션의 기본 설정을 정의합니다.
+# YAML 형식은 계층적 구조를 더 명확하게 표현할 수 있습니다.
+
+# 애플리케이션 이름 설정
+# Micronaut 애플리케이션의 이름을 'demo'로 설정
+micronaut:
+  application:
+    name: demo
+  
+  # 가상 스레드 설정
+  # 모든 executor에서 가상 스레드를 사용하도록 설정
+  # Java 21+ 에서 제공하는 가상 스레드 기능을 활용하여 성능 향상
+  executors:
+    "*":
+      virtual: true 

@@ -20,6 +20,9 @@ dependencies {
     implementation("io.micronaut.serde:micronaut-serde-jackson")
     runtimeOnly("ch.qos.logback:logback-classic")
 
+    // YAML 설정 파일 지원을 위한 의존성
+    runtimeOnly("org.yaml:snakeyaml")
+
     testImplementation "io.micronaut:micronaut-http-client" 
     testAnnotationProcessor "io.micronaut:micronaut-inject-java" // micronaut 의 compile time 빈 정의 생성을 위한 추가 정의
     testImplementation "io.micronaut.test:micronaut-test-spock"

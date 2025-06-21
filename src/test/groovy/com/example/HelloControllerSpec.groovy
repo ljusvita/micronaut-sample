@@ -1,3 +1,5 @@
+// HelloController의 REST 엔드포인트를 테스트하는 클래스입니다.
+// 동기 및 비동기 방식으로 /hello 엔드포인트의 응답을 검증합니다.
 package com.example
 
 import io.micronaut.http.HttpRequest
@@ -16,6 +18,7 @@ class HelloControllerSpec extends Specification {
     @Client("/")
     HttpClient client
 
+    // 동기 방식으로 /hello 엔드포인트의 응답을 검증
     def "test hello endpoint returns correct response"() {
         given: "a request to the hello endpoint"
         def request = HttpRequest.GET("/hello").accept(MediaType.APPLICATION_JSON)
@@ -28,6 +31,7 @@ class HelloControllerSpec extends Specification {
         response == "Hello World"
     }
 
+    // 비동기 방식으로 /hello 엔드포인트의 응답을 검증
     def "test hello endpoint returns correct response asynchronously"() {
         given: "a request to the hello endpoint and polling conditions"
         def request = HttpRequest.GET("/hello").accept(MediaType.APPLICATION_JSON)
